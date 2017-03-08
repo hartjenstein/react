@@ -1,8 +1,20 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-let { Route, Router, IndexRoute, HashHistory } = require('react-router'); 
+var {Route, Router, IndexRoute, hashHistory} = require('react-router');
+var Main = require('Main');
+var Weather = require('Weather');
+var About = require('About');
+let Examples = require('Examples');
+let WeatherForm = require('WeatherForm');
+let WeatherMessage = require('WeatherMessage');
 
 ReactDOM.render(
-  <h1>Boilerplate app!</h1>,
+  <Router history={hashHistory}>
+    <Route path="/" component={ Main }>
+       <Route path="/about" component={ About }/>
+       <Route path="/examples" component={ Examples }/>
+       <IndexRoute component={ Weather } />
+    </Route>
+  </Router>,
   document.getElementById('app')
 );
