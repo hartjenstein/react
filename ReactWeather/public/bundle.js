@@ -24944,24 +24944,26 @@
 	var Weather = React.createClass({
 	  displayName: 'Weather',
 
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      city: 'your city',
-	      message: "It's currently Degrees in"
-	    };
-	  },
+
+	  // getInitiaState is built in to react so its getting called automatically 
 	  getInitialState: function getInitialState() {
 	    return {
-	      city: this.props.city,
-	      message: this.props.message
+	      location: 'Miami',
+	      temp: '32'
 	    };
 	  },
-	  handleNewData: function handleNewData(updates) {
-	    this.setState(updates);
+	  handleNewData: function handleNewData(location) {
+	    /*this.setState({
+	      location, 
+	      temp: 23
+	     });*/
 	  },
 	  render: function render() {
-	    var city = this.state.city;
-	    var message = this.state.message;
+	    var _state = this.state,
+	        location = _state.location,
+	        temp = _state.temp;
+
+
 	    return React.createElement(
 	      'div',
 	      null,
@@ -24971,8 +24973,8 @@
 	        'Weather Component'
 	      ),
 	      React.createElement(Nav, null),
-	      React.createElement(WeatherForm, { city: city, onNewData: this.handleNewData }),
-	      React.createElement(WeatherMessage, { message: message, city: city })
+	      React.createElement(WeatherForm, { onNewData: this.handleNewData }),
+	      React.createElement(WeatherMessage, { temp: temp, location: location })
 	    );
 	  }
 	});
@@ -24992,14 +24994,13 @@
 
 	  onFormSubmit: function onFormSubmit(e) {
 	    e.preventDefault();
-	    var updates = {};
-	    var city = this.refs.city.value;
-
-	    if (city.length > 0) {
-	      this.refs.city.value = '';
-	      updates.city = city;
+	    var location = this.refs.location.value;
+	    // we varify if the user acutally entered somethin valid before we get the location
+	    if (location.length > 0) {
+	      // this.refs.location.value pulls the value of the input box via ref
+	      this.refs.location.value = '';
+	      this.props.onNewData(location);
 	    }
-	    this.props.onNewData(updates);
 	  },
 	  render: function render() {
 	    return React.createElement(
@@ -25008,7 +25009,7 @@
 	      React.createElement(
 	        'div',
 	        null,
-	        React.createElement('input', { type: 'text', ref: 'city', placeholder: 'City Name' })
+	        React.createElement('input', { type: 'text', ref: 'location', placeholder: 'City Name' })
 	      ),
 	      React.createElement(
 	        'div',
@@ -25037,17 +25038,20 @@
 	  displayName: 'WeatherMessage',
 
 	  render: function render() {
-	    var message = this.props.message;
-	    var city = this.props.city;
+	    var _props = this.props,
+	        temp = _props.temp,
+	        location = _props.location;
+
 	    return React.createElement(
 	      'div',
 	      null,
 	      React.createElement(
 	        'p',
 	        null,
-	        message,
-	        ' ',
-	        city
+	        'It is currently ',
+	        temp,
+	        ' Degrees Celsius in  ',
+	        location
 	      )
 	    );
 	  }

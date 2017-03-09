@@ -4,30 +4,29 @@ let WeatherMessage = require('WeatherMessage');
 var Nav = require('Nav');
 
 var Weather = React.createClass({
-  getDefaultProps: function () {
-    return {
-      city: 'your city',
-      message: "It's currently Degrees in"
-    };
-  },
+
+  // getInitiaState is built in to react so its getting called automatically 
   getInitialState: function () {
     return {
-        city: this.props.city,
-        message: this.props.message
+        location: 'Miami',
+        temp: '32'
     };
   },
-  handleNewData: function (updates) {
-    this.setState(updates);
+  handleNewData: function(location) {
+   /*this.setState({
+     location, 
+     temp: 23
+    });*/
   },
   render: function () {
-    let city = this.state.city;
-    let message = this.state.message;
+    let { location, temp } = this.state;
+
     return (
       <div>
         <h2>Weather Component</h2>
         <Nav/>
-        <WeatherForm city={city} onNewData={this.handleNewData}/>
-        <WeatherMessage message={message} city={city}/>
+        <WeatherForm onNewData={this.handleNewData}/>
+        <WeatherMessage temp={temp} location={location}/>
       </div>
     );
   }
