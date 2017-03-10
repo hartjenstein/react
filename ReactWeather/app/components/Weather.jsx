@@ -1,32 +1,48 @@
-var React = require('react');
+let React = require('react');
 let WeatherForm = require('WeatherForm');
 let WeatherMessage = require('WeatherMessage');
-var Nav = require('Nav');
+let Nav = require('Nav');
+let openWeatherMap = require('openWeatherMap');
 
-var Weather = React.createClass({
+let Weather = React.createClass({
 
   // getInitiaState is built in to react so its getting called automatically 
   getInitialState: function () {
     return {
-        location: 'Miami',
-        temp: '32'
+        isLoading: false
     };
   },
   handleNewData: function(location) {
-   /*this.setState({
-     location, 
-     temp: 23
-    });*/
+    let that = this;
+    this.setState({isLoading: true});
+    openWeatherMap.getTemp(location).then(function (temp) {
+      that.setState({
+        location: location,
+        temp: temp,
+        isLoading: false
+      });
+    }, function (errorMessage) {
+      that.setState({
+        isLoading: false
+      });
+      alert(errorMessage);
+    });
   },
   render: function () {
-    let { location, temp } = this.state;
-
+    let { isLoading, location, temp } = this.state;
+    const renderMessage = () => {
+      if(isLoading) { 
+        return <h3>Fetching weather...</h3>;
+      } else if (temp && location) {
+        return <WeatherMessage temp={temp} location={location}/>;
+      }
+    }
     return (
       <div>
         <h2>Weather Component</h2>
         <Nav/>
         <WeatherForm onNewData={this.handleNewData}/>
-        <WeatherMessage temp={temp} location={location}/>
+        {renderMessage()}
       </div>
     );
   }

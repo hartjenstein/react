@@ -1,6 +1,6 @@
-var React = require('react');
+let React = require('react');
 
-var WeatherMessage = React.createClass({
+let WeatherMessage = React.createClass({
   render: function () {
       let { temp, location } = this.props;
     return (

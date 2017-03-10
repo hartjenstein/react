@@ -1,9 +1,9 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var {Route, Router, IndexRoute, hashHistory} = require('react-router');
-var Main = require('Main');
-var Weather = require('Weather');
-var About = require('About');
+let React = require('react');
+let ReactDOM = require('react-dom');
+let {Route, Router, IndexRoute, hashHistory} = require('react-router');
+let Main = require('Main');
+let Weather = require('Weather');
+let About = require('About');
 let Examples = require('Examples');
 let WeatherForm = require('WeatherForm');
 let WeatherMessage = require('WeatherMessage');

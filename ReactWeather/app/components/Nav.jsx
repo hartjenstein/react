@@ -1,4 +1,4 @@
-var React = require('react');
+let React = require('react');
 let { Link, IndexLink } = require('react-router');
 
 var Nav = React.createClass({

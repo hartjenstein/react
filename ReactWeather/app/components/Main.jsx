@@ -1,7 +1,7 @@
-var React = require('react');
-var Nav = require('Nav');
+let React = require('react');
+let Nav = require('Nav');
 
-var Main = React.createClass({
+let Main = React.createClass({
   render: function () {
     return (
       <div>
