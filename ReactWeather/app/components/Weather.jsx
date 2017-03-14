@@ -13,21 +13,22 @@ let Weather = React.createClass({
     };
   },
   handleNewData: function(location) {
-    let that = this;
+  //  let that = this;
     this.setState({isLoading: true});
-    openWeatherMap.getTemp(location).then(function (temp) {
-      that.setState({
+    openWeatherMap.getTemp(location).then( (temp) => {
+        this.setState({
         location: location,
         temp: temp,
         isLoading: false
       });
-    }, function (errorMessage) {
-      that.setState({
+    }, (errorMessage) => {
+      this.setState({
         isLoading: false
       });
       alert(errorMessage);
     });
   },
+  
   render: function () {
     let { isLoading, location, temp } = this.state;
     const renderMessage = () => {
@@ -36,11 +37,10 @@ let Weather = React.createClass({
       } else if (temp && location) {
         return <WeatherMessage temp={temp} location={location}/>;
       }
-    }
+    };
     return (
       <div>
         <h2>Weather Component</h2>
-        <Nav/>
         <WeatherForm onNewData={this.handleNewData}/>
         {renderMessage()}
       </div>
