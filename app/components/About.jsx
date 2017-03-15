@@ -1,15 +1,21 @@
 let React = require('react');
-let Nav = require('Nav');
-
 
 // -----  STATELESS COMPONENT -------
 // doesnt need rendering
 let About = (props) => {
-    return (
-      <div>
-        <h2>About</h2>
-        <p>Welcome to the about page</p>
-      </div>
+   return (
+    <div>
+      <h1 className="text-center">About</h1>
+          <p> 
+            This App is for demonstration purposes. It's using the React framework in combination with nodejs and foundation. You can query the current weather for a location.
+          </p>    
+              <a href="https://facebook.github.io/react">React by Facebook</a>
+            <p>  
+                The App is using the openweathermap API, which is freely available under:
+            </p>
+            <a href="https://openweathermap.org/">Openweathermap API</a>
+
+    </div>
     );
 };
 

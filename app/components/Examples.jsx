@@ -1,7 +1,8 @@
 let React = require('react');
 let Nav = require('Nav');
 let { Link } = require('react-router');
-
+// -----  STATELESS COMPONENT -------
+// doesnt need rendering
 let Examples = (props) => {
     return (
       <div>
