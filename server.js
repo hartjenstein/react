@@ -13,7 +13,7 @@ app.use((req, res, next) =>  {
     res.redirect('http://' + req.hostname + req.url);
   }
 }); 
-
+//test
 app.use(express.static('public'));
 
 app.listen(port, function () {
