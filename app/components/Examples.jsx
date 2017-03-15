@@ -4,7 +4,8 @@ let Nav = require('Nav');
 let Examples = (props) => {
     return (
       <div>
-        <h2>Example Component</h2>
+        <h2>Examples</h2>
+        <p>Welcome to the example page</p>
       </div>
     );
 };
