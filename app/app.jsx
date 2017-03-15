@@ -8,6 +8,11 @@ let Examples = require('Examples');
 let WeatherForm = require('WeatherForm');
 let WeatherMessage = require('WeatherMessage');
 
+// load foundation
+//using style and css loader chained together (style!css!)
+require ('style!css!foundation-sites/dist/foundation.min.css');
+$(document).foundation();
+
 ReactDOM.render(
   <Router history={hashHistory}>
     <Route path="/" component={ Main }>

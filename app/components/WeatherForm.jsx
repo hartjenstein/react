@@ -5,7 +5,7 @@ let WeatherForm = React.createClass({
   onFormSubmit: function (e) {
     e.preventDefault();
     let location = this.refs.location.value;
-    // we varify if the user acutally entered somethin valid before we get the location
+    // we varify below if the user acutally entered somethin valid before we get the location
     if (location.length > 0) {
       // this.refs.location.value pulls the value of the input box via ref
       this.refs.location.value = '';

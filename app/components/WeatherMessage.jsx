@@ -4,7 +4,7 @@ let WeatherMessage = ({ temp, location }) => {
    
     return (
       <div>
-          <p>It is currently {temp} Degrees Celsius in  {location}</p>
+          <p>It is currently {temp} Degrees Celsius in {location}</p>
       </div>
     );
 };
