@@ -5,7 +5,7 @@ let React = require('react');
 let About = (props) => {
    return (
     <div>
-      <h1 className="text-center">About</h1>
+      <h1 className="text-center page-title">About</h1>
           <p> 
             This App is for demonstration purposes. It's using the React framework in combination with nodejs and foundation. You can query the current weather for a location.
           </p>    
